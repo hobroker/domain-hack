@@ -22,7 +22,15 @@ const make = (phrase, source) => {
 }
 
 router.get('/', (req, res) => {
-  const phrase = req.query.phrase.toLowerCase()
+  const { query } = req
+  if (!query.phrase) {
+    return res.status(400).json({
+      success: false,
+      message: 'No phrase was provided'
+    })
+  }
+
+  const phrase = query.phrase.toLowerCase()
   const results = []
   domains.forEach(domain => {
     if (phrase.includes(domain.tld)) {
@@ -30,7 +38,7 @@ router.get('/', (req, res) => {
       results.push(result)
     }
   })
-  res.status(200).json({
+  return res.status(200).json({
     success: true,
     value: results
   })

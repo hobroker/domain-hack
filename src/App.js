@@ -16,11 +16,19 @@ class App extends Component {
 
   onInputChange (e) {
     const { value: phrase } = e.target
+    const { results } = this.state
     this.setState({ phrase })
-    fetchResults(phrase)
-      .then(response => {
-        this.setState({ results: response.value })
-      })
+    if (phrase.length) {
+      fetchResults(phrase)
+        .then(response => {
+          this.setState({ results: response.value })
+        })
+        .catch(error => {
+          console.error(error)
+        })
+    } else if (results.length) {
+      this.setState({ results: [] })
+    }
   }
 
   render () {
@@ -57,14 +65,18 @@ class App extends Component {
             </tr>
             </thead>
             <tbody>
-            {results.map((item, index) => (
+            {results.length ? results.map((item, index) => (
               <tr key={index}>
                 <th scope='row'>{index + 1}</th>
                 <td>{item.domain}</td>
                 <td>{item.url}</td>
                 <td>{item.country}</td>
               </tr>
-            ))}
+            )) : (
+              <tr>
+                <td className='text-center' colSpan={4}>No results</td>
+              </tr>
+            )}
             </tbody>
           </table>
         </Container>
