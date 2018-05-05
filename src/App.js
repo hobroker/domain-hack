@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Col, Container, Form, FormGroup, Input, Label, Row } from 'reactstrap'
 import './App.css'
-import 'whatwg-fetch'
+import { fetchResults } from './api'
 
 class App extends Component {
   state = {
@@ -15,7 +15,12 @@ class App extends Component {
   }
 
   onInputChange (e) {
-    this.setState({ phrase: e.target.value })
+    const { value: phrase } = e.target
+    this.setState({ phrase })
+    fetchResults(phrase)
+      .then(response => {
+        this.setState({ results: response.value })
+      })
   }
 
   render () {
@@ -53,8 +58,8 @@ class App extends Component {
             </thead>
             <tbody>
             {results.map((item, index) => (
-              <tr>
-                <th scope='row'>${index + 1}</th>
+              <tr key={index}>
+                <th scope='row'>{index + 1}</th>
                 <td>{item.domain}</td>
                 <td>{item.url}</td>
                 <td>{item.country}</td>
