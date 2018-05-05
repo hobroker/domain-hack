@@ -4,6 +4,13 @@ const domains = require('../util/domains')
 
 const DEFAULT_PREFIX = 'xxx'
 
+/**
+ * @param {string} phrase
+ * @param {object} source
+ * @param {object} source.tld
+ * @param {object} source.country
+ * @return {object}
+ */
 const make = (phrase, source) => {
   // split phrase by top-level domain
   const [prefix, suffix] = phrase.split(source.tld)

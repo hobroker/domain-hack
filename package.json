@@ -4,11 +4,21 @@
   "private": true,
   "proxy": "http://localhost:8080",
   "dependencies": {
+    "babel-eslint": "^7.2.3",
+    "bootstrap": "^4.1.1",
+    "eslint": "^4.1.1",
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-plugin-flowtype": "^2.34.1",
+    "eslint-plugin-import": "^2.6.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.1.0",
     "express": "^4.16.3",
     "nodemon": "^1.17.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "reactstrap": "^6.0.1",
+    "whatwg-fetch": "^2.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
