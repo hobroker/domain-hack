@@ -2,7 +2,9 @@
   "name": "domain-hack",
   "version": "0.1.0",
   "private": true,
+  "repository": "https://github.com/hobroker/domain-hack.git",
   "proxy": "http://localhost:8080",
+  "author": "Igor Leahu <igor.leahu24@gmail.com>",
   "dependencies": {
     "babel-eslint": "^7.2.3",
     "body-parser": "^1.18.2",
