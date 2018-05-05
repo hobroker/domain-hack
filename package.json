@@ -5,6 +5,7 @@
   "proxy": "http://localhost:8080",
   "dependencies": {
     "babel-eslint": "^7.2.3",
+    "body-parser": "^1.18.2",
     "bootstrap": "^4.1.1",
     "eslint": "^4.1.1",
     "eslint-config-react-app": "^2.1.0",

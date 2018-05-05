@@ -21,16 +21,16 @@ const make = (phrase, source) => {
   return { ...source, suffix, name, domain, url }
 }
 
-router.get('/', (req, res) => {
-  const { query } = req
-  if (!query.phrase) {
+router.post('/', (req, res) => {
+  const { body } = req
+  if (!body.phrase) {
     return res.status(400).json({
       success: false,
       message: 'No phrase was provided'
     })
   }
 
-  const phrase = query.phrase.toLowerCase()
+  const phrase = body.phrase.toLowerCase()
   const results = []
   domains.forEach(domain => {
     if (phrase.includes(domain.tld)) {
